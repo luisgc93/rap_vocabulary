@@ -9,6 +9,18 @@ from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 #colours in matplotlib:
 #https://matplotlib.org/gallery/color/named_colors.html#sphx-glr-gallery-color-named-colors-py
 
+
+# used for plotting images
+def getImage(path,zoom=0.1):
+    return OffsetImage(plt.imread(path),zoom=zoom)
+# image paths
+paths = [
+    'control_machete.jpg','bad_bunny.jpg','cervantes.jpeg','vico_c.jpg','santa_rm.jpeg',
+    'chojin.jpg','tego_calderon.jpeg','cartel_de_santa.png','tres_coronas.jpg', 'duo_kie.jpg',
+    'residente.jpeg','porta.jpg','rapsusklei.jpg', 'aldeanos.jpg','falsa_alarma.jpg','kase_o.jpg',
+    'akil_ammar.jpg','tote_king.jpg','violadores_del_verso.jpg','akapellah.jpg', 'nach.jpg','sfdk.jpg' ]
+
+
 # lists x and y are used for plotting the data
 x = []
 y = []
@@ -27,20 +39,30 @@ for key, value in dict.items():
 print(x)
 print(y)
 
+# unpacks tuple into figure and axis
+fig, ax = plt.subplots()
 
 # Adds horizontal lines and fills them up
 ycoords = [3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000]
 line_colors = ['#800000','brown','tab:red',
 'darkorange','sandybrown', 'khaki','#ffff99','#ccff99', '#99ff66', '#66ff66', '#009933']
 for yc,c in zip(ycoords,line_colors):
-    plt.axhspan(ymin = yc-500, ymax = yc, xmin=0, xmax=1, color=c)
+    ax.axhspan(ymin = yc-500, ymax = yc, xmin=0, xmax=1, color=c)
 
-plt.axhline(y=7000, label='line at y = {}'.format(7000), c='green')
-plt.axhline(y=5000, label='line at y = {}'.format(7000), c='red')
+
+
+ax.scatter(x, y)
+artists = []
+for x0, y0, path in zip(x, y,paths):
+    ab = AnnotationBbox(getImage(path), (x0, y0), frameon=False)
+    artists.append(ax.add_artist(ab))
+
+ax.axhline(y=7000, label='line at y = {}'.format(7000), c='green')
+ax.axhline(y=5000, label='line at y = {}'.format(7000), c='red')
 
 # Plot
 color = 'black'
-area = np.pi*4
+area = np.pi*2
 pos = np.arange(len(y))
 # zorder attribute determines position of different layers
 plt.scatter(x, y, s=area, c=color, alpha=0.5, zorder=2)
@@ -50,4 +72,5 @@ plt.xticks(pos, x, rotation='vertical')
 plt.ylabel('Vocab Count', fontsize=16)
 plt.xlabel('Artist', fontsize=16)
 plt.title('# of Unique Words Used Within Artist’s First 35,000 Lyrics',fontsize=20)
+
 plt.show()
