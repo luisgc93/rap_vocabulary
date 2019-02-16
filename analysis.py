@@ -4,7 +4,10 @@ import numpy as np
 from matplotlib import pyplot as plt
 import pandas as pd
 from collections import OrderedDict
+# Used in image display
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
+# Used for roundcropping images
+import matplotlib.patches as patches
 
 #colours in matplotlib:
 #https://matplotlib.org/gallery/color/named_colors.html#sphx-glr-gallery-color-named-colors-py
@@ -15,10 +18,12 @@ def getImage(path,zoom=0.1):
     return OffsetImage(plt.imread(path),zoom=zoom)
 # image paths
 paths = [
-    'control_machete.jpg','bad_bunny.jpg','cervantes.jpeg','vico_c.jpg','santa_rm.jpeg',
-    'chojin.jpg','tego_calderon.jpeg','cartel_de_santa.png','tres_coronas.jpg', 'duo_kie.jpg',
-    'residente.jpeg','porta.jpg','rapsusklei.jpg', 'aldeanos.jpg','falsa_alarma.jpg','kase_o.jpg',
-    'akil_ammar.jpg','tote_king.jpg','violadores_del_verso.jpg','akapellah.jpg', 'nach.jpg','sfdk.jpg' ]
+    'images/control_machete.jpg','images/bad_bunny.jpg','images/cervantes.jpg','images/vico_c.jpg',
+    'images/santa_rm.jpg','images/chojin.jpg','images/tego_calderon.jpg','images/cartel_de_santa.jpg',
+    'images/tres_coronas.jpg', 'images/duo_kie.jpg','images/residente.jpg','images/porta.jpg',
+    'images/rapsusklei.jpg', 'images/aldeanos.jpg','images/falsa_alarma.jpg','images/kase_o.jpg',
+    'images/akil_ammar.jpg','images/tote_king.jpg','images/violadores_del_verso.jpg','images/akapellah.jpg',
+    'images/nach.jpg','images/sfdk.jpg' ]
 
 
 # lists x and y are used for plotting the data

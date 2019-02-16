@@ -2,13 +2,10 @@ from nltk.corpus import PlaintextCorpusReader
 import nltk
 
 # root folder for our .txt files
-corpus_root = '/home/l21009103/Desktop/Bham_CS/NLTK/lyrics2/lyrics'
+corpus_root = '/home/l21009103/Desktop/Bham_CS/NLTK/corpus/lyrics'
 
 # This is an object of type PlaintextCorpusReader, it is NOT indexed
 rap_corpus = PlaintextCorpusReader(corpus_root, '.*')
-
-# Prints the names of all the files that form the corpus
-#print(rap_corpus.fileids())
 
 # Add Pushkin and Oxxymiron Russian
 
@@ -40,11 +37,6 @@ violadores_del_verso = nltk.Text(nltk.word_tokenize(rap_corpus.raw('violadores-d
 zenit = nltk.Text(nltk.word_tokenize(rap_corpus.raw('zenit.txt')))[0:35000]
 zpu = nltk.Text(nltk.word_tokenize(rap_corpus.raw('zpu.txt')))[0:35000]
 
-
-#file = open('lyrics/violadores-del-verso.txt', 'r')
-
-#line = file.readline()
-#print(detect(rap_corpus.raw('violadores_del_verso.txt')))
 
 dict = {'Akapellah':akapellah, 'Akil Ammar':akil_ammar,'Aldeanos': aldeanos, 'Bad Bunny': bad_bunny,
 'Cartel de Santa' : cartel_de_santa, 'Cervantes': cervantes, 'Chojin': chojin, 'Control Machete': control_machete,

@@ -3,6 +3,8 @@ import langid
 import os
 import glob
 
+# This module removes foreign languages from our corpus files
+
 # Language detection works best when distinguishing between only 2 languages
 # Run this method twice: one to remove English, then to remove Portuguese
 def foreignDetect(string, lang):
@@ -24,7 +26,7 @@ def removeForeign(filename):
     f1.close()
     f2.close()
 
-path = 'lyrics'
+path = 'lyrics_raw'
 
 for filename in glob.glob(os.path.join(path, '*.txt')):
     removeForeign(filename)
