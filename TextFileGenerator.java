@@ -12,8 +12,6 @@ import java.util.ArrayList;
 import org.apache.tika.langdetect.OptimaizeLangDetector;
 import org.apache.tika.language.detect.LanguageDetector;
 import org.jsoup.Jsoup;
-//import com.google.cloud.translate.*;
-//Translate translate = TranslateOptions.getDefaultInstance().getService();
 
 /**
  * Class must be able to collect song lyrics from a series or urls
@@ -90,7 +88,6 @@ public class TextFileGenerator {
 			while((line = in.readLine()) != null) {
 				// THIS CODE NEVER SEEMS TO EVALUATE TO TRUE!!?
 				if(line.equals(delete)) {
-					System.out.println("BOOOOOM");
 					bw.write("DELETED");
 					System.out.println(line);
 					System.out.println(delete);
@@ -192,7 +189,6 @@ public class TextFileGenerator {
 		
 		for(String url:urls) {
 			ArrayList<String> f = urlToText(url, file);
-			//System.out.println(f.toString());
 			if(!f.isEmpty()) {
 				System.out.println("SOME ERRORS...");
 				deleteForeign(f, file);
@@ -202,14 +198,12 @@ public class TextFileGenerator {
 		
 		
 		/*
-		System.out.println("ONE");
 		
 		file = new File("sfdk.txt");
 		urls = WebCrawler.collectUrls("https://www.musica.com/letras.asp?letras=12141");
 		for(String url:urls) {
 			urlToText(url, file);
 		}
-		System.out.println("TWO");
 		
 		file = new File("falsa-alarma.txt");
 		urls = WebCrawler.collectUrls("https://www.musica.com/letras.asp?letras=16461");
@@ -258,7 +252,6 @@ public class TextFileGenerator {
 		for(String url:urls) {
 			urlToText(url, file);
 		}
-		System.out.println("TEN");
 		
 		file = new File("aldeanos.txt");
 		urls = WebCrawler.collectUrls("https://www.musica.com/letras.asp?letras=30927");
@@ -296,7 +289,6 @@ public class TextFileGenerator {
 		for(String url:urls) {
 			urlToText(url, file);
 		}
-		System.out.println("SIXTEEN");
 		
 		file = new File("vico-c.txt");
 		urls = WebCrawler.collectUrls("https://www.musica.com/letras.asp?letras=14736");
