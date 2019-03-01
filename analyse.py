@@ -2,6 +2,8 @@ from nltk.corpus import PlaintextCorpusReader
 import nltk
 import os
 
+# Module creates Text objects for NLP analysis
+
 # Try to do all the steps from rap.py but without all the duplicated code
 
 # root folder for our .txt files
