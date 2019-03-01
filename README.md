@@ -11,3 +11,5 @@ The file is then processed with python's NLTK library for natural language proce
 The module analyse.py then creates Text objects for each file and performs a simple tokenizing process to retrieve the unique word counts for each artist.
 
 The results are then plotted with matplotlib although an interactive javascript version of the graph is currently being developed. 
+
+![Alt text](/results.png)
