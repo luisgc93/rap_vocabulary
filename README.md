@@ -2,7 +2,7 @@
 This project is inspired by Matt Daniel's work for the following publication:
 https://pudding.cool/projects/vocabulary/
 
-The goal is to replicate his findings with spanish-speaking rappers. 
+The goal is to replicate his findings with Spanish-speaking rappers. 
 
 The first step of the project was to create a corpus of lyrics from a number of artists. For this purpose,TextFileGenerator.java	and WebCrawler.java were created. They scrape the following site https://www.musica.com for an artist's lyrics and generate a .txt file. 
 
