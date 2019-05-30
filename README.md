@@ -1,5 +1,5 @@
 # rap_vocabulary
-This project is inspired by Matt Daniel's work for the following publication:
+This data science project is inspired by Matt Daniel's work for the following publication:
 https://pudding.cool/projects/vocabulary/
 
 The goal is to replicate his findings with Spanish-speaking rappers. 
