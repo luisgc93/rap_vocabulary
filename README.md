@@ -8,7 +8,7 @@ The first step of the project was to create a corpus of lyrics from a number of 
 
 The file is then processed with python's NLTK library for natural language processing. The module correct.py polishes our data and removes lyrics in foreign languages such as English or Portuguese.
 
-The module analyse.py then creates Text objects for each file and performs a simple tokenizing process to retrieve the unique word counts for each artist.
+The module analyse.py then creates Text objects for each file and performs a simple tokenizing process to retrieve the unique word counts for each artist.The results are then written out and saved on results.csv.
 
 The results are then plotted with matplotlib although an interactive javascript version of the graph is currently being developed. 
 
