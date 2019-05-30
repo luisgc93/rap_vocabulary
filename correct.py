@@ -12,7 +12,6 @@ def foreignDetect(string, lang):
     lang, score = langid.classify(string)
     return lang
 
-
 def removeForeign(filename):
     f1 = open(filename, 'r')
     f2 = open(os.path.join('lyrics2',filename), 'w+')
