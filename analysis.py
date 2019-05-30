@@ -1,4 +1,4 @@
-from rap import dict
+from analyse import dict
 
 import numpy as np
 from matplotlib import pyplot as plt
@@ -8,6 +8,8 @@ from collections import OrderedDict
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 # Used for roundcropping images
 import matplotlib.patches as patches
+
+# Module plots the images and graph results
 
 #colours in matplotlib:
 #https://matplotlib.org/gallery/color/named_colors.html#sphx-glr-gallery-color-named-colors-py
@@ -22,7 +24,7 @@ paths = [
     'images/santa_rm.jpg','images/chojin.jpg','images/tego_calderon.jpg','images/cartel_de_santa.png',
     'images/tres_coronas.png', 'images/duo_kie.jpg','images/residente.jpg','images/porta.jpg',
     'images/rapsusklei.jpg', 'images/aldeanos.jpg','images/falsa_alarma.jpg','images/kase_o.jpg',
-    'images/akil_ammar.jpg','images/tote_king.jpg','images/violadores_del_verso.jpg','images/akapellah.png',
+    'images/akil_ammar.jpg','images/tote_king.jpg','images/violadores_del_verso.jpeg','images/akapellah.png',
     'images/nach.jpg','images/sfdk.jpg' ]
 
 
@@ -58,9 +60,10 @@ for yc,c in zip(ycoords,line_colors):
 
 ax.scatter(x, y)
 artists = []
-for x0, y0, path in zip(x, y,paths):
-    ab = AnnotationBbox(getImage(path), (x0, y0), frameon=False)
-    artists.append(ax.add_artist(ab))
+# comment out if you don't want the images:
+#for x0, y0, path in zip(x, y,paths):
+#    ab = AnnotationBbox(getImage(path), (x0, y0), frameon=False)
+#    artists.append(ax.add_artist(ab))
 
 ax.axhline(y=7000, label='line at y = {}'.format(7000), c='green')
 ax.axhline(y=5000, label='line at y = {}'.format(7000), c='red')
