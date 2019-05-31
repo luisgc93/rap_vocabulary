@@ -17,7 +17,7 @@ def analysis(directory):
     for filename in os.listdir(directory):
         # Step 1: Create Text object
         text_obj = nltk.Text(nltk.word_tokenize(rap_corpus.raw(filename)))[0:35000]
-        rapper_name = os.path.splitext(filename)[0]
+        rapper_name = os.path.splitext(filename)[0].title()
         # Step 2: Check word length > 35000 & populate dictionary
         if len(text_obj) == 35000:
             # Key = 'Rapper_name', value =  unique word count of TextObj
