@@ -28,6 +28,9 @@ def analysis(directory):
 def WriteDictToCSV(dict, csv_file):
     with open(csv_file, 'w') as csvfile:
         writer = csv.writer(csvfile)
+        # Write categories at the top
+        writer.writerow(['Artist', 'Count'])
+        # Write out data
         for key,value in dict.items():
             writer.writerow([key, value])
 
@@ -41,5 +44,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-    
