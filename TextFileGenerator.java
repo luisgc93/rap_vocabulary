@@ -10,9 +10,8 @@ import org.jsoup.nodes.Document;
 public class TextFileGenerator {
 
 	/*
-	 * For a given URL, parse the html code and output a .txt file with the lyrics
+	 * For a HashSet of URLs, parse the all html code and output a .txt file with the lyrics
 	 */
-
 	public static void urlToTextFile(HashSet<String> urls) throws IOException {
 		System.out.println(urls.size());
 		String url1 = urls.stream().findFirst().get();

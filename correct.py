@@ -7,25 +7,29 @@ import glob
 
 # Language detection works best when distinguishing between only 2 languages
 # Run this method twice: one to remove English, then to remove Portuguese
-def foreignDetect(string, lang):
-    langid.set_languages(['es', lang])  # ISO 639-1 codes
+def langDetect(string, lang):
+    langid.set_languages(['es', lang])  # ISO 639-1 language codes
     lang, score = langid.classify(string)
     return lang
 
 def removeForeign(filename):
-    f1 = open(filename, 'r')
-    f2 = open(os.path.join('lyrics2',filename), 'w+')
-    lines = (line.rstrip() for line in f1)
-    for line in lines:
-        if foreignDetect(line, 'en')!= 'es' or foreignDetect(line, 'pt')!= 'es':
-            print(line)
-        else:
-            f2.write(line)
-            f2.write("\n")
-    f1.close()
-    f2.close()
+    with open(filename, "r") as f:
+        lines = f.readlines()
+    with open(filename, "w") as f:
+        for line in lines:
+            if line == '---------------------------------------------------------------\n':
+                continue
+            if langDetect(line, 'en') == 'es' and langDetect(line, 'pt') == 'es':
+                f.write(line)
+            else:
+                print("FOREIGN LANGAUGE DETECTED: " + line)
 
-path = 'lyrics_raw'
 
-for filename in glob.glob(os.path.join(path, '*.txt')):
-    removeForeign(filename)
+def main():
+    path = 'lyrics_raw'
+    for filename in glob.glob(os.path.join(path, '*.txt')):
+        print(filename)
+        removeForeign(filename)
+
+if __name__ == "__main__":
+    main()
