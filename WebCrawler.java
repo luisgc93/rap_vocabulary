@@ -1,14 +1,10 @@
 package lyricsToTextFile;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Collects all urls containing lyrics from this site:
@@ -17,65 +13,59 @@ import java.util.Set;
  *
  */
 public class WebCrawler {
-	
-	public static ArrayList<String> chopOff(String string, String chop1, String chop2,
-			ArrayList <String> urlList) {
+
+	/**
+	 * Helper method that processes a HashSet containing url's in String format
+	 * and removes unwanted html
+	 * @param string
+	 * @param chop1
+	 * @param chop2
+	 * @param urlSet
+	 * @return a HashSet with clean urls
+	 */
+	public static HashSet<String> chopOff(String string, String chop1, String chop2,
+			HashSet<String> urlSet) {
         String[] parts = string.split(chop1);
         for(String part:parts) {
-        	if(part.contains("letras.asp?letra=")) {
+        	if(part.contains("letras.asp?letra=") && !part.contains("</aside>")) {
         		String result = part.
         				split(chop2)[0].replaceAll("\"", "");
-        		urlList.add("https://www.musica.com/" + result);
-        	}        	
-        }  
-        return urlList;   
+        		urlSet.add("https://www.musica.com/" + result);
+        	}
+        }
+        return urlSet;
     }
-	
+
+
 	/**
-	 * Removes duplicate url's from our ArrayList
-	 * @param urlList
-	 * @return urlList without duplicates
+	 * @param urlString
+	 * @return a HashSet with all the relevant urls linked to by urlString
 	 */
-	public static ArrayList<String> removeDuplicates(ArrayList<String> urlList){
-		
-		Set<String> urls = new HashSet<>(urlList);
-		urlList.clear();
-		urlList.addAll(urls);
-		
-		return urlList;
-	}
-	
-	public static ArrayList<String> collectUrls(String urlString){
+	public static HashSet<String> collectUrls(String urlString){
 		String readString;
-		ArrayList <String> urlList = new ArrayList<String>();
+		HashSet <String> urlSet = new HashSet<String>();
 		try {
 			URL url = new URL(urlString);
 			BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
-			BufferedWriter bw = new BufferedWriter(new FileWriter("string.txt"));
 			while ((readString = in.readLine()) != null) {
-				
-				if(readString.contains("letras.asp?letra=")) {
-					bw.write(readString);
-					bw.newLine();				
-					urlList = chopOff(readString, "<a href=", ">",urlList);	
-					}				
-				}	
+
+				if(readString.contains("letras.asp?letra=")){
+					urlSet = chopOff(readString, "<a href=", ">",urlSet);
+					}
+				}
 			}
 			catch (IOException e) {
-				
+
 				System.out.println("no access to URL: " + urlString);
 			}
-		removeDuplicates(urlList);
-		return urlList;
-		
-	}
-	
-	
-	public static void main(String[] args) {
-		
-		System.out.println(collectUrls("https://www.musica.com/letras.asp?letras=16402").size());
-		
-		
+
+		return urlSet;
 	}
 
+	public static void main(String[] args) {
+		HashSet<String> urls = collectUrls("https://www.musica.com/letras.asp?letras=16402&orden=alf");
+		for(String url : urls)
+			System.out.println(url);
+
+	}
 }
