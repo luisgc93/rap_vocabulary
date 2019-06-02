@@ -7,7 +7,7 @@ from nltk.corpus import PlaintextCorpusReader
 # This module creates Text objects for NLP analysis and outputs the results in a .csv file
 
 # root folder for our .txt files
-corpus_root = '/home/l21009103/Desktop/Bham_CS/NLTK/corpus/lyrics'
+corpus_root = '/home/l21009103/Desktop/Bham_CS/NLTK/lyrics'
 
 # This is an object of type PlaintextCorpusReader, it is NOT indexed
 rap_corpus = PlaintextCorpusReader(corpus_root, '.*')
@@ -38,7 +38,7 @@ def main():
         dict = analysis(corpus_root)
         print(dict)
         currentPath = os.getcwd()
-        csv_file = currentPath + "/results.csv"
+        csv_file = currentPath + "/plot/data/results.csv"
         WriteDictToCSV(dict, csv_file)
 
 

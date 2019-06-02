@@ -26,7 +26,7 @@ def removeForeign(filename):
 
 
 def main():
-    path = 'lyrics_raw'
+    path = 'lyrics'
     for filename in glob.glob(os.path.join(path, '*.txt')):
         print(filename)
         removeForeign(filename)

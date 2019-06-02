@@ -10,16 +10,19 @@ import org.jsoup.nodes.Document;
 public class TextFileGenerator {
 
 	/*
-	 * For a HashSet of URLs, parse the all html code and output a .txt file with the lyrics
+	 * For a given URL, parse the html code and output a .txt file with the lyrics
 	 */
+
 	public static void urlToTextFile(HashSet<String> urls) throws IOException {
 		System.out.println(urls.size());
 		String url1 = urls.stream().findFirst().get();
 		Document docName = Jsoup.connect(url1).get();
-		String filename = docName.title()
-				.replace(" | Musica.com", "")
-				.split("- ")[1] + ".txt";
-		System.out.println(filename);
+		String filename = docName.title();
+		if(filename.contains(" | Musica.com") && filename.contains("-")) {
+			filename = docName.title()
+					.replace(" | Musica.com", "")
+					.split("- ")[1] + ".txt";
+		}
 
 		File file = new File(filename);
 		for(String url : urls) {
@@ -44,8 +47,34 @@ public class TextFileGenerator {
 
 	public static void main(String [] args) throws IOException {
 
-	HashSet<String> urls = WebCrawler.collectUrls("https://www.musica.com/letras.asp?letras=16402&orden=alf");
-	urlToTextFile(urls);
 
+	String [] artist_urls = {"https://www.musica.com/letras.asp?letras=16402&orden=alf",
+			"https://www.musica.com/letras.asp?letras=12141&orden=alf",
+				"https://www.musica.com/letras.asp?letras=16461&orden=alf",
+				"https://www.musica.com/letras.asp?letras=16575&orden=alf",
+				"https://www.musica.com/letras.asp?letras=21395&orden=alf",
+				"https://www.musica.com/letras.asp?letras=10116&orden=alf",
+				"https://www.musica.com/letras.asp?letras=18256&orden=alf",
+				"https://www.musica.com/letras.asp?letras=36433&orden=alf",
+				"https://www.musica.com/letras.asp?letras=30927&orden=alf",
+				"https://www.musica.com/letras.asp?letras=44427&orden=alf",
+				"https://www.musica.com/letras.asp?letras=31606&orden=alf",
+				"https://www.musica.com/letras.asp?letras=16440&orden=alf",
+				"https://www.musica.com/letras.asp?letras=21764&orden=alf",
+				"https://www.musica.com/letras.asp?letras=23501&orden=alf",
+				"https://www.musica.com/letras.asp?letras=17503&orden=alf",
+				"https://www.musica.com/letras.asp?letras=53279&orden=alf",
+				"https://www.musica.com/letras.asp?letras=52363&orden=alf",
+				"https://www.musica.com/letras.asp?letras=20216&orden=alf",
+				"https://www.musica.com/letras.asp?letras=3605&orden=alf",
+				"https://www.musica.com/letras.asp?letras=21112&orden=alf",
+				"https://www.musica.com/letras.asp?letras=19312&orden=alf",
+				};
+
+	for(String url: artist_urls) {
+
+			HashSet<String> urls = WebCrawler.collectUrls(url);
+			urlToTextFile(urls);
+		}
 	}
 }
