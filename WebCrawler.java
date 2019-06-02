@@ -7,10 +7,8 @@ import java.net.URL;
 import java.util.HashSet;
 
 /**
- * Collects all urls containing lyrics from this site:
- * https://www.musica.com/letras.asp?letras=16402
- * @author l21009103
- *
+ * Collects all urls containing lyrics from the following site:
+ * https://www.musica.com/
  */
 public class WebCrawler {
 
