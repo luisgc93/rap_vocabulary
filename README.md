@@ -12,5 +12,10 @@ The module analyse.py then creates Text objects for each file and performs a sim
 
 https://github.com/huyle333/graphs-from-csv
 
+It can be visualized with the commands:
+`cd plot/
+python -m SimpleHTTPServer`
 
-![Alt text](/results.png)
+And then visiting http://localhost:8000
+
+![Alt text](/screenshot.png)
