@@ -5,9 +5,11 @@ The goal is to replicate his findings with Spanish-speaking rappers.
 
 The first step of the project was to create a corpus of lyrics from a number of artists. For this purpose, TextFileGenerator.java and WebCrawler.java scrape the site https://www.musica.com for an artist's lyrics and store them in a .txt file. TextFileGenerator makes use of the Jsoup library to parse and remove unwanted HTML.
 
-The file is then processed with python's NLTK library for natural language processing. The module removeLang.py polishes our data and removes lyrics in foreign languages such as English or Portuguese.
+The module removeLang.py polishes our data with the use of the langdetect library by removing lyrics in foreign languages such as English or Portuguese.
 
-The module analyse.py then creates Text objects for each file and performs a simple tokenizing process to retrieve the unique word counts for each artist. The results are then saved to results.csv and plotted with the C3 JavaScript library using code from the following repository as a template:
+The file is then processed with python's NLTK library for natural language processing. The module analyse.py creates Text objects for each file and performs a simple tokenizing process to retrieve the unique word counts for each artist. 
+
+The results are then saved to results.csv and plotted with the C3 JavaScript library using code from the following repository as a template:
 
 https://github.com/huyle333/graphs-from-csv
 
