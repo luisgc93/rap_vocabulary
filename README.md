@@ -7,7 +7,7 @@ The first step of the project was to create a corpus of lyrics from a number of 
 
 The module removeLang.py polishes our data with the use of the langdetect library by removing lyrics in foreign languages such as English or Portuguese, which would artificially inflate an artist's word count.
 
-The file is then processed with python's NLTK library for natural language processing. The module analyse.py creates Text objects for each file and performs a simple tokenizing process to retrieve the unique word counts for each artist. Both .py files require the python3 command.
+The file is then processed with python's NLTK library. The module analyse.py creates Text objects for each file and performs a simple tokenizing process to retrieve the unique word counts for each artist. Both .py files require the python3 command.
 
 The results are then saved to results.csv and plotted with the C3 JavaScript library using code from the following repository as a template:
 
