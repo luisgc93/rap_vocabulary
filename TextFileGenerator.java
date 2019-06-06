@@ -13,7 +13,6 @@ public class TextFileGenerator {
 	 */
 
 	public static void urlToTextFile(HashSet<String> urls) throws IOException {
-		System.out.println(urls.size());
 		String url1 = urls.stream().findFirst().get();
 		Document docName = Jsoup.connect(url1).get();
 		String filename = docName.title();
@@ -28,7 +27,6 @@ public class TextFileGenerator {
 
 			BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
 			String SongTitle = Jsoup.connect(url).get().title();
-			System.out.println(SongTitle);
 			String body = Jsoup.connect(url).get().body().text();
 			bw.newLine();
 			// Line separator at the beginning of each song
