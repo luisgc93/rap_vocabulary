@@ -36,7 +36,6 @@ def WriteDictToCSV(dict, csv_file):
 
 def main():
         dict = analysis(corpus_root)
-        print(dict)
         currentPath = os.getcwd()
         csv_file = currentPath + "/plot/data/results.csv"
         WriteDictToCSV(dict, csv_file)
