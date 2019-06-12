@@ -3,7 +3,7 @@ This data science project is inspired by Matt Daniel's work: https://pudding.coo
 
 The goal is to replicate his findings with Spanish-speaking rappers. 
 
-The first step of the project was to create a corpus of lyrics from a number of artists. For this purpose, TextFileGenerator.java and WebCrawler.java scrape the site https://www.musica.com for an artist's lyrics and store them in a .txt file. TextFileGenerator makes use of the Jsoup library to parse and remove unwanted HTML.
+The first step of the project was to create a corpus of lyrics from a number of preselected artists. For this purpose, TextFileGenerator.java and WebCrawler.java scrape the site https://www.musica.com for an artist's lyrics and store them in a .txt file. TextFileGenerator makes use of the Jsoup library to parse and remove unwanted HTML.
 
 The module removeLang.py polishes our data with the use of the langdetect library by removing lyrics in foreign languages such as English or Portuguese, which would artificially inflate an artist's word count.
 
