@@ -23,6 +23,25 @@
     	<div class="container">
     		<div id="chart"></div>
     	</div>
+		<div>
+			<p>This data science project is inspired by <a href="https://pudding.cool/projects/vocabulary/">
+				Matt Daniels' awesome post</a>.
+				My goal was to replicate his findings with Spanish-speaking rappers.
+				The first step of the project was to create a corpus of lyrics from a number of preselected artists.
+				For this purpose, TextFileGenerator.java and WebCrawler.java scrape the site <a href="https://www.musica.com">
+					https://www.musica.com</a> for an artist's lyrics and store them in a .txt file. TextFileGenerator
+				makes use of <a href="https://jsoup.org/">Jsoup</a> to parse and remove unwanted HTML.
+				The module remove_lang.py polishes our data with the use of the <a href="https://pypi.org/project/langdetect/">
+					langdetect</a> library by removing lyrics in
+				foreign languages such as English or Portuguese, which would artificially inflate an artist's word count.
+				The file is then processed with python's <a href="https://www.nltk.org/">NLTK</a> library. The module
+				analyse.py creates Text objects for each file and performs a simple tokenizing process to retrieve the
+				unique word counts for each artist, which are then sorted in ascending order. Both .py files
+				require python 3. The results are then saved to results.csv and plotted with the <a href="https://c3js.org/">C3 JavaScript library</a>
+				using code from the following repository as a template:
+					<a href="https://github.com/huyle333/graphs-from-csv">https://github.com/huyle333/graphs-from-csv</a>.
+</p>
+		</div>
 
 		<script src="javascripts/create-graph.js"></script>
   	</body>

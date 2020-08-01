@@ -165,3 +165,15 @@
 .c3-chart-arc .c3-gauge-value {
   fill: #000;
   /*  font-size: 28px !important;*/ }
+
+p {
+  text-indent: 30px;
+  font-size: 20px;
+  line-height: 30pt;
+  padding-right: 400px;
+  padding-left: 350px;
+  margin: 100px;
+  height: auto;
+  width: 90%;
+
+}
